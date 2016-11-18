@@ -1,0 +1,33 @@
+<div ng-controller='OrdersController'>
+	<h2>add orders here</h2>
+	<form>
+		Customer: <select ng-options='customer.name as customer.name for customer in customers' ng-model='new_order.customer_name'>
+			<option value="" disabled>Choose a customer</option>
+		</select>
+		Product: <select ng-options='product.name as product.name for product in products' ng-model='new_order.product'>
+			<option></option>
+		</select>
+		Quantity: <select ng-model='new_order.quantity'>
+			<option ng-repeat='i in quantity' value="{{ i }}">{{ i }}</option>
+		</select>
+		<button type="submit" ng-click='addOrder()'>Make Order</button>
+	</form>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Product ordered</th>
+				<th>Quantity</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat='order in orders | filter: filter_Name | orderBy: name'>
+			<tr>
+				<td>{{order.customer_name}}</td>
+				<td>{{order.product}}</td>
+				<td>{{order.quantity}}</td>
+				<td><button ng-click='deleteOrder(order)'>Remove Order</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

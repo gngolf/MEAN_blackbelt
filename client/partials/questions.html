@@ -1,0 +1,28 @@
+<div ng-controller='QuestionsController'>
+	<h3>Hi !</h3>
+	<a href="" ng-click='logout()'>Logout</a>
+	<a href="#/add_question">Add a Question</a>
+	<br>
+	<br>
+	<form>
+		Search: <input type="text">
+		<!-- <button type="submit"'>Search</button> -->
+	</form>
+	<table>
+		<thead>
+			<tr>
+				<th>Question</th>
+				<th>Answers(#)</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat='question in questions'>
+			<tr>
+				<td>{{question.text}}</td>
+				<td>{{}}</td>
+				<td><a ng-href="#/show/{{question._id}}">Show</a> <a href="#/new_answer">Answer</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
